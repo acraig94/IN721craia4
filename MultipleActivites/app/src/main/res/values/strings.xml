@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MultipleActivites</string>
+    <string name="button_Change">Change Activity</string>
+</resources>
