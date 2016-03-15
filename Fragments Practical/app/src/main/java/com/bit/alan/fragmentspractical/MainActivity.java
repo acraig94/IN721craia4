@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_tablet);
 
         Button btnImageFragment = (Button) findViewById(R.id.btn_ImageView);
         Button btnListViewFragment = (Button) findViewById(R.id.btn_ListView);
@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v)
         {
-            Fragment imageviewFragment = new ShowImageFragment();
+            Fragment imageViewFragment = new ShowImageFragment();
             FragmentManager fm = getFragmentManager();
 
             FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.listview_fragment_container, imageviewFragment);
+            ft.replace(R.id.listview_fragment_container, imageViewFragment);
             ft.commit();
         }
     }
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             FragmentManager fm = getFragmentManager();
 
             FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.listview_fragment_container, listViewFragment);
+            ft.replace(R.id.listview_fragment_container_2, listViewFragment);
             ft.commit();
         }
     }
