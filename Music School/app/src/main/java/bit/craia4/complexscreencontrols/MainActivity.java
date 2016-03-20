@@ -1,5 +1,6 @@
 package bit.craia4.complexscreencontrols;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,6 +16,8 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    EnrollConfirm confirmEnroll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +42,27 @@ public class MainActivity extends AppCompatActivity {
 
             String radioSelection = new String();
             
-            Toast.makeText(MainActivity.this, "You have enrolled for " + selectedRadio.getText() + " lessons", Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this, "You have enrolled for " + selectedRadio.getText() + " lessons", Toast.LENGTH_LONG).show();
 
-
+            confirmEnroll = new EnrollConfirm();
+            FragmentManager fm = getFragmentManager();
+            confirmEnroll.show(fm, "confirm");
         }
+    }
+
+    public void getConfirmData(boolean result)
+    {
+        confirmEnroll.dismiss();
+
+        if (result)
+        {
+            Toast.makeText(MainActivity.this, "Enrollment success", Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            Toast.makeText(MainActivity.this, "Enrollment cancelled", Toast.LENGTH_LONG).show();
+        }
+
     }
 
 

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ComplexScreenControls.iml" filepath="$PROJECT_DIR$/ComplexScreenControls.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Music School.iml" filepath="$PROJECT_DIR$/Music School.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
