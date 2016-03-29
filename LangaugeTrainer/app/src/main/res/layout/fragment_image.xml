@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bit.alan.langaugetrainer.ImageFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:id="@+id/imageView"
+        android:layout_marginBottom="120sp"
+        android:layout_marginLeft="30sp"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Q. Select the article"
+        android:id="@+id/tv_imageTxt"
+        android:layout_gravity="center_horizontal|top"
+        android:textSize="20sp" />
+
+</FrameLayout>
