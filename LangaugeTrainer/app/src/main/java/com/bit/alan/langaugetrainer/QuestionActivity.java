@@ -25,6 +25,9 @@ public class QuestionActivity extends AppCompatActivity {
     int selectedID; // selected rdo button
     RadioGroup articleGroup;
     RadioButton selectedRadio;
+    RadioButton rdo_der;
+    RadioButton rdo_die;
+    RadioButton rdo_das;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,9 @@ public class QuestionActivity extends AppCompatActivity {
         btn_Next = (Button) findViewById(R.id.btn_Next);
         btn_Next.setVisibility(View.INVISIBLE);
         articleGroup = (RadioGroup) findViewById(R.id.rdo_group);
+        rdo_das = (RadioButton) findViewById(R.id.rdo_Das);
+        rdo_die = (RadioButton) findViewById(R.id.rdo_Die);
+        rdo_der = (RadioButton) findViewById(R.id.rdo_Der);
 
         loadFragment();
         btn_Submit.setOnClickListener(new btnSubmitHandler());
@@ -57,6 +63,9 @@ public class QuestionActivity extends AppCompatActivity {
                 selectedRadio = (RadioButton) findViewById(selectedID);
 
                 String radioSelection = selectedRadio.getText().toString();
+                rdo_das.setEnabled(false);
+                rdo_der.setEnabled(false);
+                rdo_die.setEnabled(false);
 
                 if (cs.getCurrentQuestion().checkAnswer(selectedRadio.getText().toString())) // if user answer equals correct answer
                 {
@@ -89,6 +98,9 @@ public class QuestionActivity extends AppCompatActivity {
             btn_Submit.setVisibility(View.VISIBLE);
             btn_Next.setEnabled(false);
             btn_Next.setVisibility(View.INVISIBLE);
+            rdo_das.setEnabled(true);
+            rdo_der.setEnabled(true);
+            rdo_die.setEnabled(true);
 
             if (cs.isLastQuestion())
             {
