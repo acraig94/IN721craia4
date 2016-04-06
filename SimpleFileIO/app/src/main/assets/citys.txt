@@ -5,3 +5,12 @@ Dunedin
 Florence
 London
 New York
+Paris
+Rome
+Budapest
+Tokyo
+Madrid
+Glasglow
+Chicago
+Milan
+Brussels
