@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setUpList(){
-        ArrayAdapter<String> eventAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, eventArray);
+        ArrayAdapter<String> eventAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, eventArray);
         lv_Event.setAdapter(eventAdapter);
 
         for (int i = 0; i < eventArray.size(); i++)
