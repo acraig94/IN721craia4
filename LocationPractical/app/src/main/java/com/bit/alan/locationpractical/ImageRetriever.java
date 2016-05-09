@@ -40,7 +40,7 @@ public class ImageRetriever {
         pd = ProgressDialog.show(main, "Loading","Looking for image", true);
         ImageAPI imageAPI = new ImageAPI();
         imageAPI.execute();
-
+        pd.dismiss();
     }
 
     public class ImageAPI extends AsyncTask<Void, Void, String> {
@@ -89,9 +89,9 @@ public class ImageRetriever {
                 if (nPhotosReturned != 0){
                     JSONArray photoArray = photos.getJSONArray("photo");
                     JSONObject mainPhoto = photoArray.getJSONObject(0);
-                    int farmId = mainPhoto.getInt("farm");
-                    int server = mainPhoto.getInt("server");
-                    int photoId = mainPhoto.getInt("id");
+                    String farmId = mainPhoto.getString("farm");
+                    String server = mainPhoto.getString("server");
+                    String photoId = mainPhoto.getString("id");
                     String secret = mainPhoto.getString("secret");
 
                     String imgURL = "https://farm"+ farmId + ".staticflickr.com/" + server + "/"+ photoId + "_" + secret + ".jpg";
@@ -101,7 +101,7 @@ public class ImageRetriever {
                 }
                 else {
                     tv.setText("Image not found");
-                    pd.dismiss();
+                    //pd.dismiss();
                 }
 
             } catch (JSONException e) {
@@ -128,7 +128,7 @@ public class ImageRetriever {
                     InputStream is = connection.getInputStream();
                     bitmap = BitmapFactory.decodeStream(is);
                 }
-            }catch (Exception e){e.printStackTrace();};
+            }catch (Exception e){e.printStackTrace();}
 
             return bitmap;
         }
@@ -137,7 +137,7 @@ public class ImageRetriever {
         {
             bitmap = b;
             iv.setImageBitmap(bitmap);
-            pd.dismiss();
+            //pd.dismiss();
         }
 
     }
