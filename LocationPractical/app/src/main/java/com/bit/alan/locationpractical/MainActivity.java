@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
                     geoData = new JSONObject(JSONString);
                     if (!geoData.optString("geoplugin_place", "error").equals("error")) {
                         String city = geoData.getString("geoplugin_place");
+                        city = city.replace(" ", "%20");
                         String countryCode = geoData.getString("geoplugin_countryCode");
                         location = new Location(city, countryCode, ml.getLat(), ml.getLng());
                     }

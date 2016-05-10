@@ -34,6 +34,6 @@ public class Location
     }
     @Override
     public String toString(){
-        return city + ", " + countryCode;
+        return city.replace("%20", " ") + ", " + countryCode;
     }
 }
