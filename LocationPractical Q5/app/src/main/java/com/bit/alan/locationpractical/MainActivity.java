@@ -1,15 +1,8 @@
 package com.bit.alan.locationpractical;
 
-import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.location.Criteria;
-import android.location.LocationManager;
 import android.os.AsyncTask;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,10 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvError;
     private ImageView ivImg;
     private ProgressDialog progress;
-    private MyLocation ml;
-    private double lat;
-    private double lng;
-    private Context myContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,36 +48,18 @@ public class MainActivity extends AppCompatActivity {
         ivImg = (ImageView) findViewById(R.id.iv_img);
 
         btnGen.setOnClickListener(new btnGenListener());
-        myContext = this;
 
     }
 
-    public class btnGenListener implements View.OnClickListener {
+    public class btnGenListener implements View.OnClickListener
+    {
         @Override
         public void onClick(View v) {
-            // using MyLocation class to get location
-            ml = new MyLocation(getBaseContext());
-
-            //LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            //Criteria criteria = new Criteria();
-            //String providerName = lm.getBestProvider(criteria, false);
-            //if ( ContextCompat.checkSelfPermission(myContext, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
-
-            //    ActivityCompat.requestPermissions( MainActivity.this, new String[] {  android.Manifest.permission.ACCESS_COARSE_LOCATION  },
-            //            0 );
-            //}
-            //android.location.Location currentLocation = lm.getLastKnownLocation(providerName);
-            //lat = currentLocation.getLatitude();
-            //lng = currentLocation.getLongitude();
-
-
             LocationAPI APIThread = new LocationAPI();
             progress = ProgressDialog.show(MainActivity.this, "Loading","Finding city", true);
             APIThread.execute();
         }
     }
-
-
 
 
 
@@ -99,11 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
             String JSONString = null;
             Location location = null;
-            //while(location == null) {
-                //cg = new CoordinateGenerator(rand);
+            while(location == null) {
+                cg = new CoordinateGenerator(rand);
                 try {
-                    String urlString = "http://www.geoplugin.net/extras/location.gp?lat=" + ml.getLat() +
-                            "&long=" + ml.getLng() + "&format=json";
+                    String urlString = "http://www.geoplugin.net/extras/location.gp?lat=" + cg.GetLat() +
+                            "&long=" + cg.GetLng() + "&format=json";
 
                     URL urlObject = new URL(urlString);
                     HttpURLConnection connection = (HttpURLConnection) urlObject.openConnection();
@@ -130,12 +101,12 @@ public class MainActivity extends AppCompatActivity {
                     if (!geoData.optString("geoplugin_place", "error").equals("error")) {
                         String city = geoData.getString("geoplugin_place");
                         String countryCode = geoData.getString("geoplugin_countryCode");
-                        location = new Location(city, countryCode, ml.getLat(), ml.getLng());
+                        location = new Location(city, countryCode, cg.GetLat(), cg.GetLng());
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-            //}
+            }
             return location;
         }
 
